@@ -1,0 +1,42 @@
+{
+    "name": "apih/laravel-lang-helper",
+    "description": "Language helper commands for Laravel-based application",
+    "keywords": [
+        "apih",
+        "php",
+        "laravel",
+        "laravel-lang-helper",
+        "localization",
+        "translation"
+    ],
+    "homepage": "https://github.com/apih/laravel-lang-helper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": ":Mohd Hafizuddin M Marzuki",
+            "email": "hafizuddin_83@yahoo.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Apih\\LangHelper\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Apih\\LangHelper\\LangHelperServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
