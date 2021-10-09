@@ -28,7 +28,6 @@ class SortCommand extends BaseCommand
     public function handle()
     {
         $files = $this->finder->in(app()->langPath())->files()->name('*.json');
-        $files = iterator_to_array($files, false);
 
         // Terminate early if no file is found
         if (count($files) === 0) {
@@ -55,8 +54,14 @@ class SortCommand extends BaseCommand
         $this->info(__('The content of the following language files has been sorted.'));
         $this->divider();
 
-        foreach ($files as $key => $file) {
-            $this->line(sprintf('%d. <fg=cyan>%s</>', $key + 1, 'resources/lang/' . $file->getRelativePathname()));
+        $counter = 1;
+
+        foreach ($files as $file) {
+            $this->line(sprintf(
+                '%d. <fg=cyan>%s</>',
+                $counter++,
+                trim(str_replace(base_path(), '', $file->getRealPath()), DIRECTORY_SEPARATOR),
+            ));
         }
 
         $this->newLine();

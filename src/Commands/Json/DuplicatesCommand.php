@@ -28,7 +28,6 @@ class DuplicatesCommand extends BaseCommand
     public function handle()
     {
         $files = $this->finder->in(app()->langPath())->files()->name('*.json');
-        $files = iterator_to_array($files, false);
 
         // Terminate early if there is no file
         if (count($files) === 0) {

@@ -2,7 +2,7 @@
 
 namespace Apih\LangHelper\Commands;
 
-use ParseError;
+use Throwable;
 
 class MissingCommand extends BaseCommand
 {
@@ -73,8 +73,8 @@ class MissingCommand extends BaseCommand
                 foreach ($matches as $match) {
                     try {
                         $key = eval("return {$match[2]}{$match[3]}{$match[4]};");
-                    } catch (ParseError $e) {
-                        continue;
+                    } catch (Throwable $th) {
+                        $key = $match[3];
                     }
 
                     if ($this->translator->hasForLocale($key, $locale)) {
