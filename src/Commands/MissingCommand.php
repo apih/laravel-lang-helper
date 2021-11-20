@@ -35,6 +35,14 @@ class MissingCommand extends BaseCommand
         // Target locale
         $locale = $options['locale'] ?? app()->getLocale();
 
+        // Load the JSON file for the target locale
+        $jsonContents = null;
+        $jsonFilepath = app()->langPath() . "/{$locale}.json";
+
+        if ($this->filesystem->exists($jsonFilepath)) {
+            $jsonContents = $this->filesystem->get($jsonFilepath);
+        }
+
         // Default directories
         $dirs = ['app', 'config', 'database', 'public', 'resources', 'routes'];
 
@@ -78,6 +86,13 @@ class MissingCommand extends BaseCommand
                     }
 
                     if ($this->translator->hasForLocale($key, $locale)) {
+                        continue;
+                    }
+
+                    if (
+                        $jsonContents !== null &&
+                        strpos($jsonContents, json_encode($key, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . ': "') !== false
+                    ) {
                         continue;
                     }
 
