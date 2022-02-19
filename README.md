@@ -2,12 +2,16 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/apih/laravel-lang-helper.svg?style=flat-square)](https://packagist.org/packages/apih/laravel-lang-helper)
 [![Total Downloads](https://img.shields.io/packagist/dt/apih/laravel-lang-helper.svg?style=flat-square)](https://packagist.org/packages/apih/laravel-lang-helper)
+[![License](https://img.shields.io/packagist/l/apih/laravel-lang-helper?style=flat-square)](https://packagist.org/packages/apih/laravel-lang-helper)
 
 This package provides helper commands that can be used in managing and organizing language localization messages.
 
+![php artisan lang:missing](screenshot.png)
+
 ## Requirements
+
 - PHP: `^8.0`
-- Laravel: `^8.0`
+- Laravel: `^8.0|^9.0`
 
 ## Installation
 
