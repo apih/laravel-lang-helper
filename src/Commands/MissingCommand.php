@@ -71,6 +71,10 @@ class MissingCommand extends BaseCommand
             $files = $this->filesystem->allFiles($dir);
 
             foreach ($files as $file) {
+                if (!$file->isFile()) {
+                    continue;
+                }
+
                 $pattern = '/([^0-9a-zA-Z]__|trans|trans_choice|@lang)\(\s*?([\'\"])(.*?)([\'\"])\s*?[\)?,?]/s';
                 $contents = $file->getContents();
 
