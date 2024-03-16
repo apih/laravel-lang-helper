@@ -11,7 +11,7 @@ This package provides helper commands that can be used in managing and organizin
 ## Requirements
 
 - PHP: `^8.0`
-- Laravel: `^8.0|^9.0|^10.0`
+- Laravel: `^8.0|^9.0|^10.0|^11.0`
 
 ## Installation
 
