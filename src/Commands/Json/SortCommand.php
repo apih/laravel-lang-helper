@@ -38,7 +38,9 @@ class SortCommand extends BaseCommand
 
         // Sort messages in each file
         foreach ($files as $file) {
-            $messages = json_decode($file->getContents(), true);
+            $contents = $file->getContents();
+            $messages = json_decode($contents, true);
+            $lineEnding = str_contains($contents, "\r\n") ? "\r\n" : "\n";
 
             // Case-insensitive sort
             uksort($messages, function ($a, $b) {
@@ -47,7 +49,7 @@ class SortCommand extends BaseCommand
 
             $messages = json_encode($messages, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
-            $this->filesystem->put($file, $messages . PHP_EOL);
+            $this->filesystem->put($file, $messages . $lineEnding);
         }
 
         // Display the result
